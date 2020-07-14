@@ -31,7 +31,7 @@ Things you may want to cover:
 |------|----|-------|
 |nickname|string|null: false|unique: true|
 |email|string|null: false|unique: true|
-|password|password|null: false|
+|password|string|null: false|
 |family_name|string|null: false|
 |first_name|string|null: false|
 |family_name_kana|string|null: false|
@@ -43,8 +43,7 @@ Things you may want to cover:
 ### Association
 - has_many :items
 - has_many :comments
-- has_many :credit_cards
-- has_many :sending_destinations
+- has_many :todo_lists
 
 ## Itemsテーブル
 
@@ -53,11 +52,11 @@ Things you may want to cover:
 |name|string|null: false|
 |introduction|text|null: false|
 |image|string|null: false|
-|category|string|null: false|
-|condition|string|null: false|
-|postage_payer|string|null: false|
-|prefecture|string|null: false|
-|preparation_day|string|null: false|
+|category_id|integer|null: false, foreign_key: true|
+|condition_id|integer|null: false, foreign_key: true|
+|postage_payer_id|integer|null: false, foreign_key: true|
+|prefecture_id|integer|null: false, foreign_key: true|
+|preparation_day_id|integer|null: false, foreign_key: true|
 |price|integer|null: false|
 |deal_closed_date|timestamp|
 |buyer_id|integer|null: false, foreign_key: true|
@@ -65,9 +64,9 @@ Things you may want to cover:
 
 ### Association
 - belongs_to :user
-- belongs_to :credit_card
 - belongs_to :sending_destination
 - has_many :comments
+- has_many :todo_lists
 
 ## Commentsテーブル
 
@@ -81,34 +80,31 @@ Things you may want to cover:
 - has_many :users
 - has_many :items
 
-## Credit_cardsテーブル
-
-|Column|Type|Options|
-|------|----|-------|
-|card_number|integer|null: false|
-|expiration_year|integer|null: false|
-|expiration_month|integer|null: false|
-|security_code|integer|null: false|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
-
-### Association
-- belongs_to :user
-- belongs_to :item
-
-## Sending_destinationテーブル
+## Sending_destinationsテーブル
 
 |Column|Type|Options|
 |------|----|-------|
 |post_code|integer|null: false|
-|prefecture|string|null: false|
+|prefecture_id|integer|null: false, foreign_key: true|
 |city|string|null: false|
 |house_number|string|null: false|
 |building_name|string|null: false|
-|phone_number|integer|null: false|
+|phone_number|string|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
 - belongs_to :item
+
+## Todo_listテーブル
+
+|Column|Type|Options|
+|------|----|-------|
+|comment|text|null: false|
+|user_id|integer|null: false, foreign_key: true|
+|item_id|integer|null: false, foreign_key: true|
+
+### Association
+- has_many :users
+- has_many :items
