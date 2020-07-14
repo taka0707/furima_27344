@@ -59,12 +59,10 @@ Things you may want to cover:
 |preparation_day_id|integer|null: false, foreign_key: true|
 |price|integer|null: false|
 |deal_closed_date|timestamp|
-|buyer_id|integer|null: false, foreign_key: true|
-|seller_id|integer|null: false, foreign_key: true|
 
 ### Association
 - belongs_to :user
-- belongs_to :sending_destination
+- has_one :sending_destination
 - has_many :comments
 - has_many :todo_lists
 
@@ -72,13 +70,12 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|comment|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :users
-- has_many :items
+- belongs_to :user
+- belongs_to :item
 
 ## Sending_destinationsテーブル
 
@@ -90,11 +87,9 @@ Things you may want to cover:
 |house_number|string|null: false|
 |building_name|string|null: false|
 |phone_number|string|null: false|
-|user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 
 ### Association
-- belongs_to :user
 - belongs_to :item
 
 ## Todo_listテーブル
