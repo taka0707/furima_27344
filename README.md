@@ -70,6 +70,7 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
+|comment|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 
@@ -96,7 +97,6 @@ Things you may want to cover:
 
 |Column|Type|Options|
 |------|----|-------|
-|comment|text|null: false|
 |user_id|integer|null: false, foreign_key: true|
 |item_id|integer|null: false, foreign_key: true|
 
