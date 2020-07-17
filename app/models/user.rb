@@ -4,7 +4,7 @@ class User < ApplicationRecord
 
   has_many :items
 
-  VALID_PASSWORD = /\A[a-z0-9]+\z/i
+  VALID_PASSWORD = /(?=.*?[a-z])(?=.*?\d)[a-z\d]/i
   VALID_NAME = /\A[ぁ-んァ-ン一-龥]/
   VALID_NAME_KANA = /\A[ァ-ヶー－]+\z/
   VALID_EMAIL = /[a-z\d]+@[a-z\d]+/i
