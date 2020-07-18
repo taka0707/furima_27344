@@ -4,17 +4,17 @@ RSpec.describe Item, type: :model do
   before do
     user = create(:user)
     @item = build(:item, user_id: user.id)
-    @item.image = {io: File.open("#{Rails.root}/public/images/test_image.jpg"), filename: 'test_image.jpg'}
+    @item.image = { io: File.open("#{Rails.root}/public/images/test_image.jpg"), filename: 'test_image.jpg' }
   end
   describe '#create' do
     context 'can save' do
-      it 'is valid with name, introduction, category_id, condition_id, postage_payer_id, 
+      it 'is valid with name, introduction, category_id, condition_id, postage_payer_id,
           prefecture_id, preparation_day_id, price, image' do
         expect(@item).to be_valid
       end
 
       it 'is valid with price that less than 9999999' do
-        @item.price = 999999
+        @item.price = 999_999
         expect(@item).to be_valid
       end
 
@@ -76,19 +76,19 @@ RSpec.describe Item, type: :model do
       it 'is invalid without price' do
         @item.price = nil
         @item.valid?
-        expect(@item.errors[:price]).to include("is not a number")
+        expect(@item.errors[:price]).to include('is not a number')
       end
 
       it 'is invalid with price that more than 10000000' do
-        @item.price = 10000000
+        @item.price = 10_000_000
         @item.valid?
-        expect(@item.errors[:price]).to include("must be less than or equal to 9999999")
+        expect(@item.errors[:price]).to include('must be less than or equal to 9999999')
       end
 
       it 'is invalid with price that less than 299' do
         @item.price = 299
         @item.valid?
-        expect(@item.errors[:price]).to include("must be greater than or equal to 300")
+        expect(@item.errors[:price]).to include('must be greater than or equal to 300')
       end
     end
   end
