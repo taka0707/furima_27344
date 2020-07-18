@@ -62,3 +62,4 @@ end
 gem 'devise'
 gem 'mini_magick'
 gem 'active_hash'
+gem 'pry-rails'
