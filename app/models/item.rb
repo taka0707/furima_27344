@@ -20,7 +20,7 @@ class Item < ApplicationRecord
   belongs_to_active_hash :prefecture
   belongs_to_active_hash :preparation_day
 
-  validates :category, presence: true
+  validates :category, :condition, :postage_payer, :prefecture, :preparation_day, presence: true
 
   with_options numericality: { other_than: 1 } do
     validates :category_id

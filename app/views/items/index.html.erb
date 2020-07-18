@@ -163,10 +163,10 @@
     </ul>
   </div>
 </div>
-<div class='purchase-btn'>
-  <span class='purchase-btn-text'>出品する</span>
-  <%= link_to '#' do %>
-    <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
-  <% end %>
-</div>
+<%= link_to new_item_path do %>
+  <div class='purchase-btn'>
+    <span class='purchase-btn-text'>出品する</span>
+      <%= image_tag 'camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
+  </div>
+<% end %>
 <%= render "shared/footer" %>
