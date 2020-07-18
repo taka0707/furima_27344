@@ -22,7 +22,7 @@ class Item < ApplicationRecord
 
   validates :category, :condition, :postage_payer, :prefecture, :preparation_day, presence: true
 
-  with_options numericality: { other_than: 1 } do
+  with_options numericality: { other_than: 1, message: "%{model} Select" } do
     validates :category_id
     validates :condition_id
     validates :postage_payer_id
