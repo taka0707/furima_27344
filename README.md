@@ -58,6 +58,7 @@ Things you may want to cover:
 |price|integer|null: false|
 |deal_closed_date|timestamp|
 |user_id|integer|null: false, foreign_key: true|
+
 ### Association
 - belongs_to :user
 - has_one :sending_destination
