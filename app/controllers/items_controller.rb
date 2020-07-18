@@ -24,7 +24,4 @@ class ItemsController < ApplicationController
                                  :prefecture_id, :preparation_day_id, :price).merge(user_id: current_user.id)
   end
 
-  def move_to_index
-    redirect_to action: :index unless user_signed_in?
-  end
 end
