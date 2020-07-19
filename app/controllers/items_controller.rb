@@ -2,7 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   before_action :set_item, only: [:edit, :show, :update]
   before_action :move_to_index, only: [:edit]
-  
+
   def index
     @items = Item.includes(:sending_destination, :user)
   end
@@ -26,7 +26,7 @@ class ItemsController < ApplicationController
   def edit
   end
 
-  def update 
+  def update
     if @item.update(item_params)
       redirect_to root_path
     else
