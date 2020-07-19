@@ -2,6 +2,7 @@ class ItemsController < ApplicationController
   before_action :authenticate_user!, except: [:index]
 
   def index
+    @items = Item.includes(:sending_destination)
   end
 
   def new
@@ -23,5 +24,4 @@ class ItemsController < ApplicationController
     params.require(:item).permit(:name, :introduction, :image, :category_id, :condition_id, :postage_payer_id,
                                  :prefecture_id, :preparation_day_id, :price).merge(user_id: current_user.id)
   end
-
 end
