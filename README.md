@@ -92,12 +92,12 @@ Things you may want to cover:
 ### Association
 - belongs_to :item
 
-## Todo_listテーブル
+## Transactionテーブル
 
 |Column|Type|Options|
 |------|----|-------|
-|user_id|integer|null: false, foreign_key: true|
-|item_id|integer|null: false, foreign_key: true|
+|buyer_id|integer|null: false, foreign_key: true|
+|seller_id|integer|null: false, foreign_key: true|
 
 ### Association
 - has_many :users
