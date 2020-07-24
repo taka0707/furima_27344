@@ -1,4 +1,7 @@
 class SendingDestinationsController < ApplicationController
+  before_action :authenticate_user!, only: [:index]
+  before_action :move_to_index, only: [:index]
+
   def index
     @item = Item.find(params[:item_id])
     @sending_destination = ItemPayment.new
@@ -31,5 +34,11 @@ class SendingDestinationsController < ApplicationController
       card: params[:token],
       currency:'jpy'
     )
+  end
+
+  def move_to_index
+    @item = Item.find(params[:item_id])
+    @sending_destination = SendingDestination.find_by(item_id: @item.id)
+    redirect_to root_path if @sending_destination.id.present? || current_user.id == @item.user_id
   end
 end
