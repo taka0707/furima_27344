@@ -11,7 +11,7 @@ class User < ApplicationRecord
 
   validates :nickname, :email, :password, :family_name, :first_name, :family_name_kana,
             :first_name_kana, :birth_date, presence: true
-  validates :email, uniqueness: true, format: { with: VALID_EMAIL }
+  validates :email, uniqueness: { case_sensitive: true }, format: { with: VALID_EMAIL }
   validates :password, length: { minimum: 6 }, format: { with: VALID_PASSWORD }, confirmation: true
   validates :password_confirmation, presence: true
   validates :family_name, :first_name, format: { with: VALID_NAME }
