@@ -39,6 +39,6 @@ class SendingDestinationsController < ApplicationController
   def move_to_index
     @item = Item.find(params[:item_id])
     @sending_destination = SendingDestination.find_by(item_id: @item.id)
-    redirect_to root_path if @sending_destination.id.present? || current_user.id == @item.user_id
+    redirect_to root_path if @sending_destination.present? || current_user.id == @item.user_id
   end
 end

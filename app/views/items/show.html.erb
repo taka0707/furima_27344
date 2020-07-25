@@ -28,7 +28,7 @@
       <%= link_to '削除', item_path, method: :delete, class:'item-destroy' %>
     <% end %>
     
-    <% if current_user.id != @item.user_id %>
+    <% if user_signed_in? && current_user.id != @item.user_id && @item.sending_destination.blank? %>
       <%= link_to '購入画面に進む', item_sending_destinations_path(@item), class:"item-red-btn"%>
     <% end %>
 
