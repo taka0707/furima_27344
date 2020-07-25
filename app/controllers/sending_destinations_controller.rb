@@ -12,7 +12,7 @@ class SendingDestinationsController < ApplicationController
     if @sending_destination.valid?
       pay_item
       @sending_destination.save
-      return redirect_to root_path
+      redirect_to root_path
     else
       @item = Item.find(params[:item_id])
       render :index
@@ -20,19 +20,19 @@ class SendingDestinationsController < ApplicationController
   end
 
   private
-  
-  def  sending_destinations_params
+
+  def sending_destinations_params
     params.require(:item_payment).permit(:post_code, :prefecture_id, :city, :house_number,
-                  :building_name, :phone_number, :number, :exp_month, :exp_year, :cvc).merge(item_id: params[:item_id])
+                                         :building_name, :phone_number, :number, :exp_month, :exp_year, :cvc).merge(item_id: params[:item_id])
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"]
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     @item = Item.find(params[:item_id])
     Payjp::Charge.create(
       amount: @item.price,
       card: params[:token],
-      currency:'jpy'
+      currency: 'jpy'
     )
   end
 

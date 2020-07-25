@@ -58,13 +58,13 @@ RSpec.describe SendingDestination, type: :model do
       it 'is invalid without "-" in post_code' do
         @sending_destination.post_code = '0000000'
         @sending_destination.valid?
-        expect(@sending_destination.errors[:post_code]).to include("is invalid")
+        expect(@sending_destination.errors[:post_code]).to include('is invalid')
       end
 
       it 'is invalid with "-" in phone_number' do
         @sending_destination.phone_number = '000-000-000'
         @sending_destination.valid?
-        expect(@sending_destination.errors[:phone_number]).to include("is invalid")
+        expect(@sending_destination.errors[:phone_number]).to include('is invalid')
       end
     end
   end
