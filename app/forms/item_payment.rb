@@ -21,7 +21,7 @@ class ItemPayment
   validates :prefecture_id, numericality: { other_than: 1, message: '%{model} Select' }
 
   def save
-    SendingDestination.create(post_code: post_code, prefecture_id: prefecture_id, city: city, house_number: house_number,
+    SendingDestination.create!(post_code: post_code, prefecture_id: prefecture_id, city: city, house_number: house_number,
                               building_name: building_name, phone_number: phone_number, item_id: item_id)
   end
 end
