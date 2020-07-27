@@ -11,6 +11,7 @@ class SendingDestinationsController < ApplicationController
     @sending_destination = ItemPayment.new(sending_destinations_params)
     if @sending_destination.valid?
       pay_item
+      p @sending_destination
       @sending_destination.save
       redirect_to root_path
     else
