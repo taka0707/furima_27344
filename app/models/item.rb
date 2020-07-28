@@ -1,7 +1,7 @@
 class Item < ApplicationRecord
   has_one_attached :image
   belongs_to :user
-  has_one :sending_destination
+  has_one :sending_destination, foreign_key: "item_id", dependent: :destroy
   with_options presence: true do
     validates :name
     validates :introduction

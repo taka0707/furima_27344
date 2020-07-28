@@ -1,5 +1,5 @@
 class SendingDestination < ApplicationRecord
-  belongs_to :item
+  belongs_to :item, optional: true
   with_options presence: true do
     validates :post_code
     validates :prefecture_id
